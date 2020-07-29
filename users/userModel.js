@@ -10,16 +10,21 @@ module.exports = {
 };
 
 function get() {
-  return db("users").select("id", "email").orderBy("id");
+  return db("users")
+  .select("id", "email")
+  .orderBy("id");
 }
 
 function getBy(filter) {
-  return db("users").where(filter).orderBy("id");
+  return db("users")
+  .where(filter)
+  .orderBy("id");
 }
 
 async function add(user) {
   try {
-    const [id] = await db("users").insert(user, "id");
+    const [id] = await db("users")
+    .insert(user, "id");
 
     return getById(id);
   } catch (err) {
@@ -28,5 +33,19 @@ async function add(user) {
 }
 
 function getById(id) {
-  return db("users").where({ id }).first();
+  return db("users")
+  .where({ id })
+  .first();
 }
+
+function update(id, changes) {
+    return db('users')
+      .where({ id })
+      .update(changes);
+  }
+  
+  function remove(id) {
+    return db('users')
+      .where('id', id)
+      .del();
+  }
