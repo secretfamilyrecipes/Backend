@@ -10,6 +10,10 @@ router.get("/", (req, res) => {
         .catch(err => res.send(err));
 });
 
+router.getById('/:id', (req, res) => {
+    res.status(200).json(req.user)
+  });
+
 router.put('/:id', validateUserId, (req, res) => {
     users.update(req.params.id, req.body)
   
