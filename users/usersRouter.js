@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
         .catch(err => res.send(err));
 });
 
-router.getById('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     res.status(200).json(req.user)
   });
 
